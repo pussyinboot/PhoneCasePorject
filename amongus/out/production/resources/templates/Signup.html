@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/stylesheet.css" rel="stylesheet" type="text/css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+    </style>
+    <title>회원가입 화면</title>
+</head>
+<body>
+<header>
+    <div class="navbar">
+        <a href="/" id="back">illusion</a>
+        <ul>
+            <li><a href="/login">로그인</a></li>
+            <li><a href="/signup">회원가입</a></li>
+        </ul>
+    </div>
+</header>
+<article>
+    <form action="/signup" object="signUpDataTransferObject" method="post" name="SignupForm">
+        <table border="1px" bordercolor="black" class="SignUpOutLineTable">
+            <tr class="SetSize">
+                <td class="tdTitle">아이디</td>
+                <td><input class="SignUpTextBox" name="CustomerId" size="20" type="text"></td>
+            </tr>
+            <tr class="SetSize">
+                <td class="tdTitle">비밀번호</td>
+                <td><input class="SignUpTextBox" name="CustomPassword" size="20" type="password"></td>
+            </tr>
+            <tr class="SetSize">
+                <td class="tdTitle">비밀번호 확인</td>
+                <td><input class="SignUpTextBox" name="CustomPasswordCheck" size="20" type="password"></td>
+            </tr>
+            <tr class="SetSize">
+                <td class="tdTitle">이름</td>
+                <td><input class="SignUpTextBox" name="CustomerName" size="20" type="text"></td>
+            </tr>
+            <tr class="SetSize">
+                <td class="tdTitle">전화번호</td>
+                <td><input class="SignUpTextBox" name="PhoneNumber" size="20" type="text"></td>
+            </tr>
+            <tr class="SetSize">
+                <td class="tdTitle">Email</td>
+                <td><input class="SignUpTextBox" name="Email" size="20" type="email"></td>
+            </tr>
+        </table>
+        <input class="SignUpButton" style="height: 100px;width: 200px;" type="submit" value="회원가입">
+    </form>
+</article>
+<footer>
+    <p>COMPANY : (주)나혼자개발한다 / OWNER : 정희준 / ADDRESS : 서울특별시 성북구 케로로 24 베이컨가 4층 402-4호</p>
+    <p>TEL : 02-1464-5244 / BUSINESS LICENCE : 814-84-01484 / ONLINE BUSINESS LICENCE : 제2014-서울영장포-17435호</p>
+    <p>MASTER : 이순신 { WEBMASTER _ phonecase0424@alone.com }</p>
+    <p>COPYRIGHT (C) 2014 ALL RIGHTS RESERVED. 호스팅제공: 카페24(주)</p>
+</footer>
+</body>
+</html>

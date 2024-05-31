@@ -1,7 +1,14 @@
 package org.example.models;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,32 +17,22 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
-@Data
-@Setter
-@Getter
 @Entity
-@Table(name = "CUSTOMER" )
-@Builder
+@Data
 @AllArgsConstructor
-@NoArgsConstructor //이걸 안 적었구나
-public class Customer implements UserDetails {
+@NoArgsConstructor
+@Builder
+public class Admin implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CustomerNo")
     private Long id;
 
-    //PK가 아닌 아이디, 비밀번호의 아이디
-    @Column(unique = true, name = "Customerid", nullable = false)
-    private String Customerid;
-    @Column(name = "CustomerPassword", nullable = false)
-    private String CustomerPassword;
-    @Column(name = "CustomerName", nullable = false)
-    private String CustomerName;
-    @Column(name = "PhoneNumber", nullable = false)
-    private String PhoneNumber;
-    @Column(unique = true, name = "Email", nullable = false)
-    private String Email;
+    private String adminId;
+
+    private String password;
+
+    private String adminName;
 
     private String role;
 
@@ -55,11 +52,7 @@ public class Customer implements UserDetails {
 
     @Override
     public String getUsername() {
-        return Customerid;
-    }
-    @Override
-    public String getPassword(){
-        return CustomerPassword;
+        return adminId;
     }
 
     @Override
@@ -81,5 +74,4 @@ public class Customer implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
 }

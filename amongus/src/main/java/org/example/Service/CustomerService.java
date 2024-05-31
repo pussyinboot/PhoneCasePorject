@@ -3,7 +3,7 @@ package org.example.Service;
 import lombok.RequiredArgsConstructor;
 import org.example.models.Customer;
 import org.example.repository.CustomerRepository;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.example.dto.SignUpDataTransferObject;
 
@@ -11,7 +11,7 @@ import org.example.dto.SignUpDataTransferObject;
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
-    //private SignUpDataTransferObject signUpDataTransferObject;
+    private SignUpDataTransferObject signUpDataTransferObject;
     //private final PasswordEncoder passwordEncoder;//
 
     public Customer create(String Customerid, String CustomerPassword, String CustomerName, String PhoneNumber, String Email){
@@ -21,9 +21,9 @@ public class CustomerService {
             customer.setCustomerName(CustomerName);
             customer.setPhoneNumber(PhoneNumber);
             customer.setEmail(Email);
-            customer.setCustomerPassword(CustomerPassword);
-            //BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            //customer.setCustomerPassword(passwordEncoder.encode(CustomerPassword));
+            //customer.setCustomerPassword(CustomerPassword);
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            customer.setCustomerPassword(passwordEncoder.encode(CustomerPassword));
             //customer.setCustomerPassword(passwordEncoder.encode(CustomerPassword));
             this.customerRepository.save(customer);
             return customer;

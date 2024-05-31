@@ -27,17 +27,11 @@ public class Admin implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String adminId;
-
     private String password;
-
     private String adminName;
-
     private String role;
-
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 
     @Override

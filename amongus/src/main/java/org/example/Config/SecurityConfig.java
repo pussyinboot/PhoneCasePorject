@@ -1,5 +1,6 @@
 package org.example.Config;
 
+import org.example.Service.CustomerLoginService;
 import org.example.Service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,12 +20,17 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig{
     @Autowired
     private LoginService loginService;
+    private CustomerLoginService customerLoginService;
 
+    public SecurityConfig(LoginService loginService, CustomerLoginService customerLoginService){
+        this.loginService = loginService;
+        this.customerLoginService = customerLoginService;
+    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeHttpRequests().requestMatchers("/").permitAll();
-        http.authorizeHttpRequests().requestMatchers("/admin","/customer").hasRole("ADMIN");
+        http.authorizeHttpRequests().requestMatchers("/admin").hasRole("ADMIN");
         http.authorizeHttpRequests().requestMatchers("/customer").hasRole("NOTADMIN");
 
         http.formLogin()

@@ -11,4 +11,8 @@ public class CustomerController {
     public String admin(){
         return "notadmin";
     }
+    @GetMapping("/accessDenied")
+    public String accessDenied(){
+        return "accessDenied";
+    }
 }
